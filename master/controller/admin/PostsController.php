@@ -99,4 +99,13 @@ class PostsController extends AdminController
             }
         }
     }
+    
+    public function delete()
+    {
+        if (!empty($_POST)) {
+            $master = MasterFactory::getInstance();
+            $master->getTable('posts')->deletePostAndComments($_POST['id']);
+            header('Location:index.php?p=admin.posts.index');
+        }
+    }
 }
