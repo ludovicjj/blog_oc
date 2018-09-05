@@ -19,6 +19,17 @@ class PostsController extends Controller
         } else {
             $limit = 0;
         }
-        $this->render('frontend/posts', compact('paging'));
+        
+        $req_post = $master->getTable('posts')->allWithLimit($limit);
+        if (empty($req_post)) {
+            $this->notFound();
+        } else {
+            $post = array();
+            foreach ($req_post as $data) {
+                $entity_post = $master->getTable('posts')->getEntity($data);
+                $post[] = $entity_post;
+            }
+            $this->render('frontend/posts', compact('paging', 'post'));
+        }
     }
 }
