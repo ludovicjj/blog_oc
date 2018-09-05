@@ -35,4 +35,11 @@ class CommentsController extends AdminController
         $master->getTable('comments')->updateComment($_GET['id']);
         header('Location:index.php?p=admin.comments.action&id='.$_GET['post_id']);
     }
+    
+    public function delete()
+    {
+        $master = MasterFactory::getInstance();
+        $master->getTable('comments')->deleteComment($_GET['id']);
+        header('Location:index.php?p=admin.comments.action&id='.$_GET['post_id']);
+    }
 }
