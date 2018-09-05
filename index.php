@@ -15,6 +15,10 @@ switch ($p) {
         $controller = new master\controller\HomeController();
         $controller->index();
         break;
+    case 'posts':
+        $controller = new master\controller\PostsController();
+        $controller->posts();
+        break;
     default:
         $controller = new master\controller\HomeController();
         $controller->index();
