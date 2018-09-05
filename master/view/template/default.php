@@ -49,6 +49,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?p=posts">Articles</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="index.php?p=register">Inscription</a>
+                    </li>
                 </ul>
             </div>
         </div>
