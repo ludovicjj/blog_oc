@@ -34,4 +34,20 @@ class UsersTable extends Table
             [$username, $password, $mail]
         );
     }
+    
+    /*
+    * function loginUser
+    * @param string username
+    * @param string password
+    * @return array
+    */
+    public function loginUser($username, $password)
+    {
+        $user = $this->database->prepare(
+            'SELECT * FROM '.$this->table .' WHERE username = ? AND password = ?',
+            [$username, $password],
+            true
+        );
+        return $user;
+    }
 }
