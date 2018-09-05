@@ -23,6 +23,10 @@ switch ($p) {
         $controller = new master\controller\PostsController();
         $controller->singlePost();
         break;
+    case 'register':
+        $controller = new master\controller\UsersController();
+        $controller->register();
+        break;
     default:
         $controller = new master\controller\HomeController();
         $controller->index();
