@@ -46,4 +46,13 @@ class MysqlDatabase
         }
         return $data;
     }
+    
+    public function prepareWithLimit($statement, $limit)
+    {
+        $req = $this->getPdo()->prepare($statement);
+        $req->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $req->execute();
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
 }
