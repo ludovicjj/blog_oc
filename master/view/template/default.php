@@ -46,6 +46,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php?p=index">Accueil <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?p=posts">Articles</a>
+                    </li>
                 </ul>
             </div>
         </div>
