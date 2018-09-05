@@ -13,8 +13,50 @@
         </div>
         <div class="col-sm-12">
             <legend>Commentaires</legend>
+            <table class="table">
+            <?php foreach ($comments as $comments_list) : ?>
+            <tr>
+                <td class="author">
+                    <img src="public/img/logo-user.png" alt="logo-user"/><?= $comments_list->getAuthor() ;?>
+                </td>
+                <td>
+                    <small>
+                        Le <?= $comments_list->getDay() .
+                        ' '. $comments_list->getMonth() .
+                        ' '. $comments_list->getYear() .
+                        ' à ' . $comments_list->getHour();?>
+                    </small>
+                    <p><?= $comments_list->getContent(); ?><p>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+            </table>
+            
             <?php
-            echo '<div class="alert alert-danger">Vous devez être connecté pour envoyer un commentaire</div>';
+            if (isset($_SESSION['username'])) {
+            ?>
+            <form method="post" action="#focus" class="form-group" id="focus">
+                <legend>Votre commentaire</legend>
+                <div class="form-group conteneur-form">
+                    <label for="content">Votre message</label>
+                    <textarea id="content" name="content" class="form-control champs"
+                    placeholder="Votre message"></textarea>
+                </div>
+                <button class="btn btn-custom">Envoyer</button>
+            </form>
+            <?php
+            if (isset($error)) {
+                if ($error) {
+                    echo '<div class="alert alert-danger">'.$message.'</div>';
+                }
+            } elseif (isset($_GET['info'])) {
+                echo '<div class="alert alert-success">';
+                echo 'Votre commentaire a été envoyé et sera publié après validation par l\'administration';
+                echo '</div>';
+            }
+            } else {
+                echo '<div class="alert alert-danger">Vous devez être connecté pour envoyer un commentaire</div>';
+            }
             ?>
         </div>
     </div>
