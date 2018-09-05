@@ -76,7 +76,23 @@ class PostsTable extends Table
     }
     
     /*
-    * function addPostWithId
+	* function addPost
+    * @pram string title
+    * @pram string intro
+    * @pram string content
+    * @pram string author
+    * @pram string image
+    */
+    public function addPost($title, $intro, $content, $author, $image)
+    {
+        $this->database->prepare(
+            'INSERT INTO '. $this->table .' SET title = ?, intro = ?, content = ?, author = ?, image = ?',
+            [$title, $intro, $content, $author, $image]
+        );
+    }
+    
+    /*
+    * function editPostWithId
     * @pram string title
     * @pram string intro
     * @pram string content
