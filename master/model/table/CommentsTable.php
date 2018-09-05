@@ -56,4 +56,23 @@ class CommentsTable extends Table
         );
         return $req;
     }
+    
+    /*
+    * function commentsByPostWAiting
+    * @param int post_id
+    * @return array 
+    */
+    public function commentsByPostWaiting($post_id)
+    {
+        $req = $this->database->prepare(
+            'SELECT comments.id, comments.author, comments.content, comments.post_id AS postId
+            FROM '. $this->table .'
+            LEFT JOIN posts
+            ON comments.post_id = posts.id
+            WHERE comments.statut = 1
+            AND comments.post_id = ?',
+            [$post_id]
+        );
+        return $req;
+    }
 }
