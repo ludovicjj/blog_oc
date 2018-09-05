@@ -35,4 +35,15 @@ class MysqlDatabase
         }
         return $this->pdo;
     }
+    
+    public function query($statement, $one = false)
+    {
+        $req = $this->getPdo()->query($statement);
+        if ($one) {
+            $data = $req->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $data;
+    }
 }
