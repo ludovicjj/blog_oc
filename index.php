@@ -27,6 +27,14 @@ switch ($p) {
         $controller = new master\controller\UsersController();
         $controller->register();
         break;
+    case 'login':
+        $controller = new master\controller\UsersController();
+        $controller->login();
+        break;
+    case 'logout':
+        $controller = new master\controller\UsersController();
+        $controller->logout();
+        break;
     default:
         $controller = new master\controller\HomeController();
         $controller->index();
