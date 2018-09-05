@@ -8,7 +8,7 @@ class HomeController extends Controller
         $this->setTitle('Accueil');
         $error = null;
         $message = null;
-        if (isset($_POST)) {
+        if ($_POST) {
             $error = true;
             $message = 'Tous les champs sont obligatoires.';
             if (!empty($_POST['nom'] && $_POST['mail'] && $_POST['message'])) {
