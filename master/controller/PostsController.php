@@ -67,7 +67,7 @@ class PostsController extends Controller
                     }
                 }
                 
-                $this->render('frontend/single', compact('post'));
+                $this->render('frontend/single', compact('post', 'error', 'message', 'comments'));
             }
         } else {
             $this->notFound();
