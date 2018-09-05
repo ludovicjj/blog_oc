@@ -28,4 +28,11 @@ class CommentsController extends AdminController
         
         $this->render('backend/comments/action', compact('post', 'comments'));
     }
+    
+    public function update()
+    {
+        $master = MasterFactory::getInstance();
+        $master->getTable('comments')->updateComment($_GET['id']);
+        header('Location:index.php?p=admin.comments.action&id='.$_GET['post_id']);
+    }
 }
