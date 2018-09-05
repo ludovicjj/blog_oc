@@ -53,6 +53,17 @@
                       <a class="nav-link" href="index.php?p=register">Inscription</a>
                     </li>
                 </ul>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    echo '<a class="btn btn-secondary my-2 my-sm-0 btn-connexion" href="index.php?p=logout">';
+                    echo 'Deconnexion';
+                    echo '</a>';
+                } else {
+                    echo '<a class="btn btn-secondary my-2 my-sm-0 btn-connexion" href="index.php?p=login">';
+                    echo 'Connexion';
+                    echo '</a>';
+                }
+                ?>
             </div>
         </div>
     </nav>
