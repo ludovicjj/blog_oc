@@ -61,4 +61,42 @@ class PostsController extends AdminController
         }
         $this->render('backend/posts/add', compact('error', 'message'));
     }
+    
+    public function edit()
+    {
+        if (isset($_GET['id'])) {
+            $master = MasterFactory::getInstance();
+            $req_post = $master->getTable('posts')->postWithId($_GET['id']);
+            if ($req_post) {
+                $post = $master->getTable('posts')->getEntity($req_post);
+                if ($_POST) {
+                    if (empty($_FILES['image']['name'])) {
+                        $path_image = $post->getImage();
+                    } else {
+                        $image = $_FILES['image']['name'];
+                        $extensions_valides = array('jpg', 'jpeg', 'png');
+                        $extension_upload = strtolower(substr(strrchr($image, '.'), 1));
+                        
+                        if (in_array($extension_upload, $extensions_valides)) {
+                            $path_image ='public/img/' . $_FILES['image']['name'];
+                            move_uploaded_file(
+                                $_FILES['image']['tmp_name'],
+                                $path_image
+                            );
+                        }
+                    }
+                    $master->getTable('posts')->editPostWithId(
+                        $_POST['title'],
+                        $_POST['intro'],
+                        $_POST['content'],
+                        $_POST['author'],
+                        $path_image,
+                        $_GET['id']
+                    );
+                    header('Location:index.php?p=admin.posts.index');
+                }
+                $this->render('backend/posts/edit', compact('post'));
+            }
+        }
+    }
 }
