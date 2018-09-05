@@ -88,4 +88,17 @@ class CommentsTable extends Table
             [$id_comment]
         );
     }
+    
+    /*
+    * function deleteComment
+    * @param int id
+    */
+    public function deleteComment($id_comment)
+    {
+        $this->database->prepare(
+            'DELETE FROM '. $this->table .'
+            WHERE comments.id = ?',
+            [$id_comment]
+        );
+    }
 }
