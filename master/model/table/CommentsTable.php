@@ -75,4 +75,17 @@ class CommentsTable extends Table
         );
         return $req;
     }
+    
+    /*
+    * function updateComment
+    * @param int id
+    */
+    public function updateComment($id_comment)
+    {
+        $this->database->prepare(
+            'UPDATE '. $this->table .' SET comments.statut = 2
+            WHERE comments.id = ?',
+            [$id_comment]
+        );
+    }
 }
