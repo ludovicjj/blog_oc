@@ -74,4 +74,10 @@ class UsersController extends Controller
         }
         $this->render('frontend/login', compact('error', 'message'));
     }
+    
+    public function logout()
+    {
+        session_destroy();
+        header('Location:index.php?p=index');
+    }
 }
