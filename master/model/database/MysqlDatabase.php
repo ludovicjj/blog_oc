@@ -10,7 +10,7 @@ class MysqlDatabase
     private $db_host;
     private $db_name;
     private $pdo;
-	
+    
     public function __construct($db_user, $db_pass, $db_host, $db_name)
     {
         $this->db_user = $db_user;
@@ -29,7 +29,7 @@ class MysqlDatabase
                     $this->db_pass
                 );
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
         }
@@ -60,8 +60,7 @@ class MysqlDatabase
     {
         $req = $this->getPdo()->prepare($statement);
         $res = $req->execute($options);
-        if (
-            strpos($statement, 'UPDATE') === 0 ||
+        if (strpos($statement, 'UPDATE') === 0 ||
             strpos($statement, 'INSERT') === 0 ||
             strpos($statement, 'DELETE') === 0
         ) {
