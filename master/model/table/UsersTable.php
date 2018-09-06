@@ -75,4 +75,16 @@ class UsersTable extends Table
             [$id_user]
         );
     }
+    
+    /** function downUser
+    * @param int id
+    */
+    public function downUser($id_user)
+    {
+        $req = $req = $this->database->prepare(
+            'UPDATE '. $this->table .' SET users.statut = 1
+            WHERE id = ?',
+            [$id_user]
+        );
+    }
 }
