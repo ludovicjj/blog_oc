@@ -16,4 +16,11 @@ class UsersController extends AdminController
         }
         $this->render('backend/users/index', compact('users'));
     }
+    
+    public function upper()
+    {
+        $master = MasterFactory::getInstance();
+        $master->getTable('users')->upUser($_GET['id']);
+        header('Location:index.php?p=admin.users.index');
+    }
 }
