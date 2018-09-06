@@ -1,5 +1,7 @@
 ## How to use this project :
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5fb249ced7a146468a63ce94bb9d9b43)](https://app.codacy.com/app/ludovicjj/blog_oc?utm_source=github.com&utm_medium=referral&utm_content=ludovicjj/blog_oc&utm_campaign=Badge_Grade_Dashboard)
+
 - Download all files and folders.
 - Follow the instructions to set the database.
 
