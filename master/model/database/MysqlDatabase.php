@@ -18,7 +18,7 @@ class MysqlDatabase
         $this->db_host = $db_host;
         $this->db_name = $db_name;
     }
-	
+    
     private function getPdo()
     {
         if ($this->pdo === null) {
