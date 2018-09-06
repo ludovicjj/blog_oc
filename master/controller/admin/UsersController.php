@@ -23,4 +23,11 @@ class UsersController extends AdminController
         $master->getTable('users')->upUser($_GET['id']);
         header('Location:index.php?p=admin.users.index');
     }
+    
+    public function down()
+    {
+        $master = MasterFactory::getInstance();
+        $master->getTable('users')->downUser($_GET['id']);
+        header('Location:index.php?p=admin.users.index');
+    }
 }
