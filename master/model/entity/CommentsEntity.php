@@ -63,7 +63,7 @@ class CommentsEntity extends Entity
     public function setContent($content)
     {
         if (is_string($content)) {
-            $this->content = htmlspecialchars($content);
+            $this->content = nl2br(htmlspecialchars($content));
         }
     }
     public function setStatut($statut)
