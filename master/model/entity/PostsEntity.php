@@ -88,7 +88,7 @@ class PostsEntity extends Entity
     public function setContent($content)
     {
         if (is_string($content)) {
-            $this->content = nl2br(htmlspecialchars($content));
+            $this->content = nl2br($content);
         }
     }
     public function setAuthor($author)
